@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guestbook</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    .red {
+      color:blue;
+    }
+  </style>
+
+  </head>
+<body>
+    <div class="container">
+        <h2 class="red">Guestbook</h2>
+        <form>
+            <div class="form-group">
+                <label for="name" class="red">Name:</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" required></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="submitEntry()">Submit</button>
+        </form>
+        
+        <div id="entries"></div>
+    </div>
+    
+    <script>
+        function submitEntry() {
+            var name = document.getElementById('name').value;
+            var message = document.getElementById('message').value;
+            var timestamp = new Date().toLocaleString();
+            
+            var entry = '<div class="panel panel-default">' +
+                        '<div class="panel-heading"><strong>' + name + '</strong> wrote:</div>' +
+                        '<div class="panel-body">' + message + '</div>' +
+                        '<div class="panel-footer">' + timestamp + '</div>' +
+                        '</div>';
+            
+            document.getElementById('entries').innerHTML += entry;
+            document.getElementById('name').value = '';
+            document.getElementById('message').value = '';
+        }
+    </script>
+</body>
+</html>
