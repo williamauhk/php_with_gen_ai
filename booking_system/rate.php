@@ -3,15 +3,12 @@
 
   <?php
   // SQLite database file
-  $dbFile = 'currency_exchange.db';
+ $db = new SQLite3('database.db');
 
   // Create the SQLite database if it doesn't exist
-  if (!file_exists($dbFile)) {
-    $db = new SQLite3($dbFile);
-    $db->exec("CREATE TABLE exchange_rates (id INTEGER PRIMARY KEY AUTOINCREMENT, currency_from TEXT, currency_to TEXT, exchange_rate REAL)");
-  } else {
-    $db = new SQLite3($dbFile);
-  }
+
+    $db->exec("CREATE TABLE IF NOT EXISTS exchange_rates (id INTEGER PRIMARY KEY AUTOINCREMENT, currency_from TEXT, currency_to TEXT, exchange_rate REAL)");
+
 
   // Function to fetch all exchange rates from the database
   function getExchangeRates($db) {

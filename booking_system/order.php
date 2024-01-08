@@ -47,6 +47,16 @@
             $db->close();
             unset($db);
           }
+
+          //add page 
+          $db = new SQLite3('database.db');
+          $query = "CREATE TABLE IF NOT EXISTS bookings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            currency TEXT,
+            amount REAL
+          )";
+          $db->exec($query);
+            
         ?>
 
 

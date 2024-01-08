@@ -12,7 +12,7 @@
 
     <?php
     // Create SQLite database and table if they don't exist
-    $db = new SQLite3('members.db');
+    $db = new SQLite3('database.db');
     $query = "CREATE TABLE IF NOT EXISTS members (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT,

@@ -4,7 +4,7 @@
 
     <?php
     // Create SQLite database and table if they don't exist
-    $db = new SQLite3('orders.db');
+    $db = new SQLite3('database.db');
     $query = "CREATE TABLE IF NOT EXISTS orders (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT

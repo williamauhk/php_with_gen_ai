@@ -6,7 +6,7 @@
 
     <?php
     // Create SQLite database and table if they don't exist
-    $db = new SQLite3('settings.db');
+    $db = new SQLite3('database.db');
     $query = "CREATE TABLE IF NOT EXISTS settings (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 office_hours TEXT,
