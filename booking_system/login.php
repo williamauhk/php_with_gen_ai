@@ -37,7 +37,7 @@
               $_SESSION['role'] = $row['role'];
               // Redirect to different pages based on role
               if ($_SESSION['role'] == 'staff') {
-                  echo '<script type="text/javascript">window.location.href = "admin_order.php";</script>';
+                  echo '<script type="text/javascript">window.location.href = "booking_admin.php";</script>';
               } else {
                   echo '<script type="text/javascript">window.location.href = "order.php";</script>';
               }
