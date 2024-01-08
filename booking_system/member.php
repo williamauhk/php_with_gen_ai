@@ -40,7 +40,7 @@
     }
 
     // Retrieve users from the database
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM users order by id desc";
     $result = $db->query($query);
     $users = [];
     while ($row = $result->fetchArray(SQLITE3_ASSOC)) {

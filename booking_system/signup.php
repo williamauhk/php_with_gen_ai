@@ -27,6 +27,10 @@
 
             // User registration successful
             echo '<div class="alert alert-success">Registration successful!</div>';
+
+         
+              echo '<script type="text/javascript">window.location.href = "login.php";</script>';
+          
           }
 
           // Close the database connection
