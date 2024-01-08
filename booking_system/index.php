@@ -8,12 +8,32 @@ $db = new SQLite3('database.db');
 // Query to fetch all exchange rates
 $query = "SELECT * FROM exchange_rates";
 $result = $db->query($query);
+
+$query = "SELECT office_hours FROM settings WHERE id = '1'";
+$office_hours_result = $db->query($query);
+
+$office_hours = $office_hours_result->fetchArray(SQLITE3_ASSOC)['office_hours'];
 ?>
 
 <div class="container">
-    <h1 class="mt-4 mb-3">Exchange Rates</h1>
-    <div class="row">
-        <div class="col-lg-12">
+<div class="container">
+    <div class="jumbotron mt-3">
+        <h1 class="display-4">Welcome to ABC Exchange Company</h1>
+        <p class="lead">Welcome to our website! If you don't have an account yet and want to make a booking .</p>
+        <p > <a href="signup.php" class="btn btn-primary btn-lg">Please Sign Up Now</a></p>
+    </div>
+
+    <!-- Rest of your code -->
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+            <h4> Exchange Rates</h4>
+            </div>
+            <div class="card-body">
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -37,6 +57,18 @@ $result = $db->query($query);
             </table>
         </div>
     </div>
+    <div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Opening Hours</h4>
+            </div>
+            <div class="card-body">
+                <pre class="card-text"><?php echo htmlspecialchars($office_hours); ?></pre>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
 <?php

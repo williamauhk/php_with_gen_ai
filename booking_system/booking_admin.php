@@ -48,7 +48,7 @@ $offset = ($page - 1) * $bookingsPerPage;
   }
 
     // Retrieve bookings from the database
-    $query = "SELECT * FROM bookings LIMIT $bookingsPerPage OFFSET $offset";
+    $query = "SELECT * FROM bookings order by id desc LIMIT $bookingsPerPage OFFSET $offset ";
     $result = $db->query($query);
     $bookings = [];
     while ($row = $result->fetchArray(SQLITE3_ASSOC)) {

@@ -86,7 +86,7 @@ $booking = $result->fetchArray(SQLITE3_ASSOC);
                 <div class="form-group">
                     <label for="currency_from">Currency From</label>
                     <select name="currency_from" class="form-control" id="currency_from" onchange="getExchangeRate()">
-                        <?php
+                    <option selected disabled>Please select</option> <?php
                         // Fetch each row as an associative array and display its data
                         while ($row = $result_from->fetchArray(SQLITE3_ASSOC)) {
                             echo '<option>' . htmlspecialchars($row['currency_from']) . '</option>';
@@ -96,8 +96,8 @@ $booking = $result->fetchArray(SQLITE3_ASSOC);
                 </div>
                 <div class="form-group">
                     <label for="currency_to">Currency To</label>
-                    <select  name="currency_to" class="form-control" id="currency_to" onchange="getExchangeRate()">
-                        <?php
+                  <select  name="currency_to" class="form-control" id="currency_to" onchange="getExchangeRate()">
+                  <option selected disabled>Please select</option><?php
                         // Fetch each row as an associative array and display its data
                         while ($row = $result_to->fetchArray(SQLITE3_ASSOC)) {
                             echo '<option>' . htmlspecialchars($row['currency_to']) . '</option>';

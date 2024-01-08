@@ -41,14 +41,14 @@
     <!-- Settings Form -->
     <h4>System Settings</h4>
     <form method="POST">
-      <!-- <div class="form-group">
+      <div class="form-group">
         <label for="office-hours">Office Hours:</label>
-        <input type="text" class="form-control" id="office-hours" name="office-hours" value="<?php echo $settings['office_hours']; ?>">
+        <textarea type="text" class="form-control" id="office-hours" name="office-hours"> <?php echo $settings['office_hours']; ?></textarea>
       </div>
       <div class="form-group">
         <label for="cutoff-time">Cut Off Time:</label>
         <input type="text" class="form-control" id="cutoff-time" name="cutoff-time" value="<?php echo $settings['cutoff_time']; ?>">
-      </div> -->
+      </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="maintenance-mode" name="maintenance-mode" <?php if ($settings['maintenance_mode']) echo 'checked'; ?>>
         <label class="form-check-label" for="maintenance-mode">Maintenance Mode</label>
