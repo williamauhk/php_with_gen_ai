@@ -10,15 +10,6 @@
        
           $db = new SQLite3('database.db');
           $db->busyTimeout(5000);
-
-          // Create the users table if it doesn't exist
-          $query = "CREATE TABLE IF NOT EXISTS users (
-                      id INTEGER PRIMARY KEY AUTOINCREMENT,
-                      username TEXT NOT NULL,
-                      password TEXT NOT NULL
-                    )";
-          $db->exec($query);
-
     
 
           // Retrieve the submitted username and password
@@ -26,13 +17,30 @@
           $password = $_POST['password'];
 
           // Query the database for the user with the given credentials
-          $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-          $result = $db->query($query);
-
+          $query = "SELECT * FROM users WHERE username = :username AND password = :password";
+          $stmt = $db->prepare($query);
+          
+          $stmt->bindValue(':username', $username, SQLITE3_TEXT);
+          $stmt->bindValue(':password', $password, SQLITE3_TEXT);
+          
+          $result = $stmt->execute();
+          
           // Check if the user exists in the database
           if ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-            // User authentication successful
-            echo '<div class="alert alert-success">Login successful!</div>';
+              // User authentication successful
+              echo '<div class="alert alert-success">Login successful!</div>';
+          
+              // Start the session
+            
+              // Add username and role to session
+              $_SESSION['username'] = $row['username'];
+              $_SESSION['role'] = $row['role'];
+              // Redirect to different pages based on role
+              if ($_SESSION['role'] == 'staff') {
+                  echo '<script type="text/javascript">window.location.href = "admin_order.php";</script>';
+              } else {
+                  echo '<script type="text/javascript">window.location.href = "order.php";</script>';
+              }
           } else {
             // User authentication failed
             echo '<div class="alert alert-danger">Invalid username or password.</div>';
@@ -45,7 +53,7 @@
         ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
           <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">Phone no</label>
             <input type="text" class="form-control" id="username" name="username" required>
           </div>
           <div class="form-group">
@@ -57,5 +65,4 @@
       </div>
     </div>
   </div>
-</body>
-</html>
+  <?php include("footer.php"); ?>

@@ -36,7 +36,7 @@
         ?>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
           <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">Phone no</label>
             <input type="text" class="form-control" id="username" name="username" required>
           </div>
           <div class="form-group">
@@ -48,5 +48,4 @@
       </div>
     </div>
   </div>
-</body>
-</html>
+  <?php include("footer.php"); ?>
