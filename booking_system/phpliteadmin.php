@@ -1,4 +1,6 @@
 <?php
+
+error_reporting(E_ALL);
 //	
 //	Project: phpLiteAdmin (https://www.phpliteadmin.org/)
 //	Version: 1.9.8.2
